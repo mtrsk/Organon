@@ -1,0 +1,20 @@
+#+NAME: list-posts
+#+BEGIN_SRC elisp :cache yes :exports results :results EXPORT html
+  (defun pretify (filename) (substring filename 15))
+  (defun generate-html (path)
+    (concat "<li><a href=./" (file-name-base path) ".html" ">" (pretify (file-name-base path)) "</a></li>"))
+
+  (setq wikipages (mapcar #'generate-html (file-expand-wildcards "./*-*.org")))
+
+  (mapconcat 'identity wikipages "\n")
+#+END_SRC
+
+#+RESULTS[0f5ebbad0d95ec11b4c75e9db817c05c97276dd8]: list-posts
+#+begin_export html
+<li><a href=./20211012215602-kubernetes.html>kubernetes</a></li>
+<li><a href=./20211013230422-kubectl.html>kubectl</a></li>
+<li><a href=./20211023140908-helm.html>helm</a></li>
+<li><a href=./20211029092528-dns.html>dns</a></li>
+<li><a href=./20211103110648-kubernetes_storage.html>kubernetes_storage</a></li>
+<li><a href=./20211103202637-kubernetes_configmaps.html>kubernetes_configmaps</a></li>
+#+end_export

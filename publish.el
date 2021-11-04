@@ -16,6 +16,7 @@
 ;;;; don't ask for confirmation before evaluating a code block
 (setq org-confirm-babel-evaluate nil)
 (setq org-export-use-babel t)
+(setq org-export-with-broken-links t)
 
 ;;; Project variables:
 
@@ -29,10 +30,10 @@
                                                        (make-list 3 root-dir)))
 
 (setq-default website-html-preamble (apply 'format (concat "<header class='header'>\n"
-                                                           "  <a href=\"%s/index.html\">Home</a>\n"
+                                                           "  <a href=\"https://mtrsk.github.io/\">Home</a>\n"
                                                            "  <nav>\n"
-                                                           "    <a href=\"%s/notes.html\">Notes</a>\n"
-                                                           "    <a href=\"%s/posts.html\">Posts</a>\n"
+                                                           "    <a href=\"%s/index.html\">Notes</a>\n"
+                                                           "    <a href=\"https://mtrsk.github.io/posts.html\">Posts</a>\n"
                                                            "  </nav>\n"
                                                            "</header>\n")
                                            (make-list 3 root-dir)))
@@ -46,7 +47,7 @@
 
 (setq org-publish-project-alist
       `(("notes"
-         :base-directory ,.
+         :base-directory ,"."
          :base-extension "org"
          :publishing-directory ,out-dir
          :publishing-function org-html-publish-to-html
@@ -79,6 +80,13 @@
          :html-preamble ,website-html-preamble
          :html-postamble ,website-html-postamble)
 
+        ("css"
+         :base-directory "./css/"
+         :base-extension "css"
+         :publishing-directory ,(concat out-dir "css")
+         :publishing-function org-publish-attachment
+         :recursive t)
+
         ("images"
          :base-directory "./images/"
          :base-extension "png\\|jpg\\|gif"
@@ -86,4 +94,4 @@
          :publishing-function org-publish-attachment
          :recursive t)
 
-        ("all" :components ("images" "notes"))))
+        ("all" :components ("css" "images" "notes"))))
