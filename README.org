@@ -1,0 +1,2 @@
+* Organon
+#+html: <a href="https://github.com/mtrsk/mtrsk.github.io/actions/workflows/docker-emacs.yml/badge.svg"> <img alt="pipeline status" src="https://github.com/mtrsk/mtrsk.github.io/actions/workflows/docker-emacs.yml/badge.svg" /></a>
