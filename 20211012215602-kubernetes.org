@@ -184,9 +184,6 @@ Service.
 **** Types
 + ~Loadbalancer~: External access via cloud load-balancer
 + ~NotePort~: External access via nodes
-+ ~ClusterIP~ (default): Internal cluster connectivity
-
-**** YAML structure
 
 #+BEGIN_SRC yaml
 apiVersion: v1
@@ -203,6 +200,20 @@ spec:
   selector:
     app: web
 #+END_SRC
+
++ ~ClusterIP~ (default): Internal cluster connectivity
++ ~ExternalName~
+
+#+BEGIN_SRC yaml
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: example-en
+  spec:
+    type: ExternalName
+    externalName: <service-name>.<namespace>.svc.cluster.local
+#+END_SRC
+
 
 ** Pods
 

@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       bd5dba58-0dd8-4b89-aabb-8bd49ed8c27c
+:END:
+#+title: Kubernetes-Ingress
+
+* What is an Ingress Controller?
+
++ Opens the cluster to receive traffic from the external world
++ Routes traffic to the backend services
