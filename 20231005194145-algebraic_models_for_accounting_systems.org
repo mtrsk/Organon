@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       9a03d556-ded4-4096-9a8c-c2147dee70a5
+:END:
+#+title: Algebraic Models For Accounting Systems
+
+* Approaches to Accounting Theory
+** Algebraic concepts employed
++ Balance vectors
+  * A balance vector is a column vector or column matrix the sum of whose entries equals zero.
+  * Balance vectors are able to represent the state of an accounting system at any instant.
+  * They are also capable of encoding the transactions that are applied to the system.
+    
++ Digraph
+  * The vertices represent accounts and the edges indicate where there are flows
+    of value within the system. Thus a digraph gives a picture of how value can
+    flow around an accounting system.
++ Automaton
+  * The applicability to accounting is clear: the states of the accounting
+    system are the balance vectors, the inputs are the transactions and the
+    outputs are the new balance vectors.
++ Monoid
+  * 
+
+* Balance Vectors
+** The values of an account
+
