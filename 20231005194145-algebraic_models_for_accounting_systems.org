@@ -4,7 +4,6 @@
 #+TITLE: Algebraic Models for Accounting Systems
 #+STARTUP: latexpreview
 #+ROAM_TAGS: "accounting" "algebra"
-#+LATEX_HEADER: usepackage{arev}
 
 Algebraic Models for Accouting Systems
 
@@ -30,7 +29,7 @@ Algebraic Models for Accouting Systems
 
 Let there be given a set R together with two binary operations on R called
 addition and multiplication, denoted in the usual way, such that the following
-rules hold for all elements a, b, c of R:
+rules hold for all elements $a, b, c \in R$:
 
 \begin{align*}
 (a + b) + c &= a + (b + c) \tag{1}\\
@@ -44,8 +43,8 @@ a \times (b + c) &= a \times b + a \times c \tag{7}\\
 \end{align*}
 
 The first four of these requirements assert that *R* is an algebraic structure
-called an *abelian group*. With the additional properties (5) through (8) R
-becomes a *commutative ring* with identity.
+called an *[[id:6550857e-ec3f-4b76-80ce-9b86df92601e][Abelian Group]]*. With the additional properties (5) through (8) R
+becomes a *[[id:44839048-b783-4a37-9267-b8e59160d90f][Commutative Ring]]* with identity.
 
 A commutative ring with identity *R* is said to be *linearly ordered* if there is a
 non-empty subset *P* of *R* not containing 0, called the set of positive elements,
@@ -127,9 +126,13 @@ r \times (u + v) &= r \times u + r \times v \tag{5}\\
 1_R \times v &= v \tag{8}
 \end{align*}
 
+These properties demonstrate that the set R^n has a recognizable algebraic
+structure. Indeed properties (1) – (4) assert that R^n is an [[id:6550857e-ec3f-4b76-80ce-9b86df92601e][Abelian Group]], while
+the additional properties (5) through (8) make R^n into a [[id:e4bd8f7b-a64d-4da3-b1e8-289d6fb0c441][Left R-Module]].
+
 *** The free R-module R^n
 
-It turns out that R^n is a particular type of R-module called a free R-module. To
+It turns out that R^n is a particular type of R-module called a Free R-module. To
 see what is special about it, consider the so-called elementary column vectors
 e(1), e(2), ... , e(n) where the ith entry of e(i) is 1 = 1_R and all other
 entries are 0. Thus:
@@ -162,4 +165,59 @@ elementary vectors since:
 \begin{equation*}
 v = v_1 \times e(1) + v_2 \times e(2) + \dots + v_n \times e(n)
 \end{equation*}
+
+#+BEGIN_CENTER
+The set of elementary vectors {e(1), . . . , e(n)} is an R-basis of R^n, so that R^n is a free R-module of rank n.
+#+END_CENTER
+
+*** Balance vectors in R^n
+
+The accounts of a company generally fall into three categories:
+
+1. /Asset accounts/, which represent anything owned by the company
+2. /Liability accounts/, which record what is owed by the company to external entities
+3. /Equity accounts/ or a /profit and loss account/; these show what is owed by the
+   company to the owners and also show the net assets of the company.
+
+It is a fundamental fact that a double entry accounting system must always be in
+balance, a fact which is implied by the accounting equation:
+
+\begin{equation*}
+A - L = E
+\end{equation*}
+
+We proceed now to study the properties of the subset of balance vectors in R^n,
+where R is an ordered domain.
+
+First, let us consider the function σ : R^n → R, which sums the entries of a
+column vector $v \in R^n$. 
+
+\begin{equation*}
+\sigma(v) = \sum_{i=0}^{n} v_i
+\end{equation*}
+
+σ has the following properties:
+
+\begin{align*}
+\sigma(v + w) &= \sigma(v) + \sigma(w) \\
+\sigma(rv) &= r \sigma(v)\\
+\forall v,w \in R^n, r \in R
+\end{align*}
+
+A function between two R-modules with these properties is called an [[id:e41608f8-fcf2-4b02-b502-9441c0aee369][R-Module Homomorphism]].
+
+Module elements which are sent to zero by a module homomorphism σ form a subset
+called the *kernel*, written Ker(σ).
+
+Returning to the particular homomorphism σ, we conclude that its kernel,
+i.e. the set of balance vectors, is a submodule of R^n. We shall write $\mathttt{Baln} (R)$
+for the set of all balance vectors in R^n, so that $\mathttt{Ker}(\sigma) =
+\mathttt{Baln}(R)$ is a submodule of R^n, which will be called the balance module
+of degree n over R.
+
+*** Properties of the Balance Module
+
+
+
+
 
