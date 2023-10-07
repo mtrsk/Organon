@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2023-10-07 Sat 21:43 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>History-of-Logic</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Marcos Benevides">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script src="/static/mathjax/tex-chtml.js" id="MathJax-script" async></script>
+<link rel="stylesheet" href="/css/site.css" type="text/css"/>
+<link rel="stylesheet" href="/static/fontawesome/css/all.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<header class='header'>
+  <a href="https://mtrsk.github.io/">Home</a>
+  <nav>
+    <a href="/index.html">Notes</a>
+    <a href="https://mtrsk.github.io/posts.html">Posts</a>
+  </nav>
+</header>
+</div>
+<div id="content">
+<header>
+<h1 class="title">History-of-Logic</h1>
+</header><p>
+:ID:       0c082d02-4771-4860-8119-83b263c00ff3
+</p>
+<p>
+Notes from the book "History of Logic: from Aristotle to Tarski".
+</p>
+
+<div id="outline-container-org2111c70" class="outline-2">
+<h2 id="org2111c70">Intro</h2>
+<div class="outline-text-2" id="text-org2111c70">
+<p>
+Roughly speaking, the development of logic in Europe has had three "golden
+ages":
+</p>
+<ul class="org-ul">
+<li>Greek period, from around 350 to 200 BCE and included thinkers like:
+<ul class="org-ul">
+<li>Aristotle</li>
+<li>Diodoru Cronus</li>
+<li>Chrysippus</li>
+</ul></li>
+<li>High medieval period, from around 1100 to 1400</li>
+<li>Modern period, from around 1850 up to the present day</li>
+</ul>
+</div>
+
+<div id="outline-container-org21b216f" class="outline-3">
+<h3 id="org21b216f">The Greek period</h3>
+<div class="outline-text-3" id="text-org21b216f">
+<p>
+From the beginning of the Greek golden period we get many anticipations of later
+developments. From Aristotle we get a wonderfully worked out system of
+"term-logic", known as the "syllogism", which was a precursor to the first-order
+logic, or "predicate calculus", and which became easily the most influential
+contribution in logic for two thousand years. From the Stoics we get the first
+formulations of elements of propositional logic, with definitions of connectives
+given via truth-values, but we also see many other interesting formulations of
+logical problems, such as proposals for the nature of implication that are very
+similar to some contemporary theories on subjunctive and indicative
+conditionals. Much of the best work form the Stoic period, notably the work of
+Chrysippus, has been lost to history, but we know indirectly that he wrote much
+on logic generally, and specifi cally about paradoxes, including the Liar and
+the Sorites. It was for a very long time thought that the Aristotelian and Stoic
+conceptions of logic were at odds with one another, before their reconciliation
+in the modern era under the umbrella of first-order logic. 
+</p>
+
+<p>
+The fact that Aristotle’s achievement was so great actually had the unexpected
+consequence of holding back logical progress. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org96e995e" class="outline-3">
+<h3 id="org96e995e">The medieval period</h3>
+<div class="outline-text-3" id="text-org96e995e">
+<p>
+While learning in the West declined, the study of logic was kept alive in the 
+thriving Islamic world under the Abbasid Caliphate, reaching great heights of
+sophistication with notable contributions from: 
+</p>
+<ul class="org-ul">
+<li>Al-Farabi</li>
+<li>Avicenna</li>
+<li>Averroes</li>
+</ul>
+
+<p>
+From the start of the twelfth century onwards, Europe became increasingly
+exposed to the Arabic world, and with this exposure came a rediscovery of the
+ancient Greek texts on logic, especially those of Aristotle, along with the
+benefit of the sophisticated Arabic commentaries. As these texts circulated
+around Europe we find the beginning of our second golden age of logic, from
+about 1100 to 1400, the high medieval or "scholastic" period, with notable
+contributors including Peter Abelard, William of Sherwood, Peter of Spain,
+William of Ockham and Paul of Venice. Curiously, during this period there was a
+combination both innovative progress and reverence for ancient authority, most
+particularly that of Aristotle. The progress came in the form of greater
+understanding of quantification, reference and logical consequence, a more
+intricate treatment of semantics, and developments in modal and temporal logic.
+</p>
+
+<p>
+In the early decades of the sixteenth century, across northern Europe, we find
+the introductory arts course being adapted to meet the requirements of an influx
+of students from the professional classes. Within this arts course, with its
+humanist predilection for Greek and Latin eloquence, and legal and ethical
+instruction, there was an acknowledged need for some rigorous underpinning of
+instruction in ‘clear thinking’. But the meticulous introduction to formal logic
+and semantic theory provided by the scholastic programme came to look
+increasingly unsuitable for this purpose.
+Lisa Jardine 1982 : 805 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org720d77b" class="outline-3">
+<h3 id="org720d77b">The birth of Calculus</h3>
+<div class="outline-text-3" id="text-org720d77b">
+<p>
+While the study of pure logic may have declined in the early scientific period,
+there were a great many advances in mathematics, in particular in algebra and
+geometry. By the end of the sixteenth century European mathematicians had
+recovered many of the works from antiquity that had been lost, and largely
+improved upon the Arabic algebraic developments. This period of mathematical
+progress arguably culminated with the creation of the infinitesimal calculus of
+Leibniz (1646–1716) and Newton (1642–1727). Leibniz himself was an outstanding
+mind who worked in many fields and, against the intellectual tide of his day, he
+conducted a solitary programme of innovative research in formal logic. Although
+the main body of Leibniz’s works on logic remained relatively unknown until the
+turn of the twentieth century, in retrospect he is hugely significant for
+articulating a completely new vision of the subject – one that stressed the use
+of the recently developed mathematical and algebraic methods.
+</p>
+
+<p>
+Leibniz’s motivations for pursuing an algebraic treatment of logic were deeply
+rooted in his philosophical views. He conceived of a mathematically
+reconstructed logic as a medium that would refl ect the nature of thought more
+faithfully than the comparatively clumsy linguistic approach of the medieval
+logicians. The idea was that this new logic, being symbolic rather than
+linguistic, would actually improve the way that we think, by laying out the real
+elements of thought with perfect clarity, and would therefore be a crucial key
+in advancing science generally. In his ambition, Leibniz saw the possibility for
+a universal language of thought based on logic; a lingua philosophica (or
+‘philosophical language’), which is something that would be recognizable to any
+student of analytic philosophy today. Despite the details of Leibniz’s logical
+innovations remaining largely out of sight in the Royal Library of Hanover until
+the turn of the twentieth century, the general character of his vision managed
+to exert an infl uence on a number of early pioneers in the modern age of
+logic. For instance, Leibniz’s ideal of a perfect language of thought heavily
+infl uenced two of the most important logicians of the early modern period;
+George Boole (1815–1864) and Gottlob Frege. This influence is reflected in the
+titles of their best known works on logic – Boole’s 1854 work "The Laws of
+Thought" and Frege’s 1879 work "Begriffsschrift" (which means ‘concept-
+script’). Although Boole and Frege diff ered signifi cantly in their approaches,
+both were trying to realize the mathematical vision of logic that Leibniz had
+envisaged.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org16f961d" class="outline-3">
+<h3 id="org16f961d">The modern era</h3>
+<div class="outline-text-3" id="text-org16f961d">
+<ul class="org-ul">
+<li>George Boole: Inspired by Aristotle and Leibniz, Boole managed to encode
+logical statements in a algebraic manner.</li>
+<li>Charles Sanders Pierce:   Further developing on Boole's approach, adding many
+contributions and taking the bold move to abandon Aristotle's Logic. Pierce
+also tried to work with what today looks like Temporal and Modal Logics, and
+helped develop and introduce the modern version of quantifiers.</li>
+<li>Gottlob Frege: Alongside Pierce, Frege independentely helped introduce the
+idea of universal quantifiers. Frege work is also famous for being what we
+would today call <i>Predicate Calculus</i> in the modern sense, since it contains a
+formal language with quantifiers, logical connectives and predicates
+(including unary and relational ones), together with a set of Axioms and one
+law of inference (<i>Modus Pones</i>).</li>
+<li>Russel &amp; Whitehead:</li>
+<li>David Hilbert:</li>
+<li>Kurt Gödel:</li>
+<li>Alfred Tarski: Tarski's landmark paper "On the concept of Truth in Formalized
+Languages" contains a definition of the satisfaction relation.</li>
+</ul>
+
+<p>
+Aristotelian quantifier phrases take two predicates as arguments: they have the
+form ‘All A are B’, ‘Some A is B’, ‘No A is B’ or ‘Not all A are B’. Fregean or
+Peircian quantifi ers are unary and introduce a bound variable : a variable
+standing
+</p>
+
+<p>
+One of the fundamental insights of the algebraic approach to logic was that
+logical symbols are subject to interpretation, as symbols in algebra are (for
+example, the geometric interpretation of complex numbers). Th is leads naturally
+to the idea of a model : an interpretation of the vocabulary of a logical system
+which satisfies its axioms. We therefore come to the notion of a Boolean
+algebra: any model of Boole’s axioms of logic. Such algebras consist of a set of
+atoms, the elements of the algebra; distinguished elements 0 and 1; and
+conjunction (intersection or multiplication), disjunction (union or addition)
+and complementation (negation or subtraction) operations on the set of
+elements. The study of Boolean algebras was begun by Marshall Stone, who proved
+a number of important results, including the representation theorem that bears
+his name: every Boolean algebra is isomorphic to (that is, has the same
+structure as) a Boolean algebra of sets.
+</p>
+
+<p>
+We can trace the birth of model theory to Löwenheim’s paper "Über Möglichkeiten
+im Relativkalkül". Working within Schröder’s version of the calculus of
+relations, Löwenheim showed that if a first-order sentence has a model, then it
+has a countable model. Th e Norwegian mathematician Thoralf Skolem improved
+Löwenheim’s proof in a paper of 1920, and in doing so generalized the result
+from single sentences to (possibly infi nite) sets of sentences. The result is
+important because it shows that first-order logic is not, in general, able to
+fix the cardinalities of its models: there can, for example, be models of the
+theory of real numbers which are countable, or models of set theory where sets
+that the theory holds to be uncountable are actually (from the external,
+model-theoretic perspective) countable. The completeness theorem for first-order
+logic, later proved by Gödel in his 1929 PhD thesis, is an easy corollary of
+Skolem’s work from the early 1920s, but this was not understood until later.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="footer"> Last updated 2023-10-07 Sat 21:43.<br> Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3). Source code availiable <a href="https://github.com/mtrsk/mtrsk.github.io">Here</a>.</div>
+</div>
+</body>
+</html>

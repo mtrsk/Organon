@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2023-10-07 Sat 21:43 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Algebraic Models for Accounting Systems</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Marcos Benevides">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script src="/static/mathjax/tex-chtml.js" id="MathJax-script" async></script>
+<link rel="stylesheet" href="/css/site.css" type="text/css"/>
+<link rel="stylesheet" href="/static/fontawesome/css/all.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<header class='header'>
+  <a href="https://mtrsk.github.io/">Home</a>
+  <nav>
+    <a href="/index.html">Notes</a>
+    <a href="https://mtrsk.github.io/posts.html">Posts</a>
+  </nav>
+</header>
+</div>
+<div id="content">
+<header>
+<h1 class="title">Algebraic Models for Accounting Systems</h1>
+</header><p>
+:ID:       9a03d556-ded4-4096-9a8c-c2147dee70a5
+</p>
+<p>
+Algebraic Models for Accouting Systems
+</p>
+
+<div id="outline-container-orgb290e4d" class="outline-2">
+<h2 id="orgb290e4d">Approaches to Accounting Theory</h2>
+<div class="outline-text-2" id="text-orgb290e4d">
+</div>
+<div id="outline-container-orge3d7150" class="outline-3">
+<h3 id="orge3d7150">Algebraic concepts employed</h3>
+<div class="outline-text-3" id="text-orge3d7150">
+<ul class="org-ul">
+<li>Balance vectors
+<ul class="org-ul">
+<li>A balance vector is a column vector or column matrix the sum of whose entries equals zero.</li>
+<li>Balance vectors are able to represent the state of an accounting system at any instant.</li>
+<li>They are also capable of encoding the transactions that are applied to the system.</li>
+</ul></li>
+
+<li>Digraph
+<ul class="org-ul">
+<li>The vertices represent accounts and the edges indicate where there are flows
+of value within the system. Thus a digraph gives a picture of how value can
+flow around an accounting system.</li>
+</ul></li>
+<li>Automaton
+<ul class="org-ul">
+<li>The applicability to accounting is clear: the states of the accounting
+system are the balance vectors, the inputs are the transactions and the
+outputs are the new balance vectors.</li>
+</ul></li>
+<li>Monoid</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0fe1d58" class="outline-2">
+<h2 id="org0fe1d58">Balance Vectors</h2>
+<div class="outline-text-2" id="text-org0fe1d58">
+</div>
+<div id="outline-container-org5487458" class="outline-3">
+<h3 id="org5487458">The values of an account</h3>
+<div class="outline-text-3" id="text-org5487458">
+<p>
+Let there be given a set R together with two binary operations on R called
+addition and multiplication, denoted in the usual way, such that the following
+rules hold for all elements \(a, b, c \in R\):
+</p>
+
+\begin{align*}
+(a + b) + c &= a + (b + c) \tag{1}\\
+a + b &= b + a \tag{2}\\
+\exists 0 \in R, \forall a \in R, a + 0_r &= a \tag{3}\\
+\forall a \in R, \exists (-a) \in R, a + (-a) &= 0 \tag{4}\\
+a \times (b \times c) &= (a \times b) \times c \tag{5}\\
+a \times b &= b \times a \tag{6}\\
+a \times (b + c) &= a \times b + a \times c \tag{7}\\
+\exists 1 \in R, \forall a \in R, a \times 1 &= a \tag{8}
+\end{align*}
+
+<p>
+The first four of these requirements assert that <b>R</b> is an algebraic structure
+called an <b></b>. With the additional properties (5) through (8) R
+becomes a <b></b> with identity.
+</p>
+
+<p>
+A commutative ring with identity <b>R</b> is said to be <b>linearly ordered</b> if there is a
+non-empty subset <b>P</b> of <b>R</b> not containing 0, called the set of positive elements,
+such that the following conditions are satisfied:
+</p>
+
+\begin{align*}
+a,b \in P \implies a + b \in P &\wedge a \times b \in P \tag{9}\\
+\forall a \in R, (a \in P) \lor (a = 0) &\lor (-a \in P) \tag{10}\\
+\end{align*}
+
+<p>
+The actual concept of a linear order arises when one defines a &lt; b to mean that
+b − a &isin; P. The negative elements of R are the elements of the set R \ (P ∪
+{0}). On the basis of (9) and (10) it can be shown that the following holds:
+</p>
+
+\begin{align*}
+\forall a,b \in R, (a < b) \lor (a = b) &\lor (a > b) \tag{11}\\
+a,b \in R \wedge a \times b = 0 \implies a = 0 &\lor b = 0 \tag{12}\\
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-orgd367328" class="outline-3">
+<h3 id="orgd367328">The State of an Accounting System</h3>
+<div class="outline-text-3" id="text-orgd367328">
+<p>
+Let <b>R</b> be an <b>ordered domain</b>, which will be the universal set for all account
+values, and let n be a positive integer, which will be the number of accounts in
+the accounting system. The state of the system at any instant can be described
+by listing the values of the accounts, which are assumed to be in some agreed
+order, in the form of an n-column vector over <b>R</b>.
+</p>
+
+\begin{equation*}
+V = \begin{bmatrix}
+v_1 \\ 
+v_2 \\ 
+\vdots \\ 
+v_n \\ 
+\end{bmatrix}
+\end{equation*}
+
+<p>
+Thus v<sub>i</sub> &isin; R is the value of the ith account. The set of all n-column vectors over R is denoted by R<sup>n</sup>. 
+</p>
+
+<p>
+Of particular importance is the zero vector:
+</p>
+
+\begin{equation*}
+0 = \begin{bmatrix}
+0 \\ 
+0 \\ 
+\vdots \\ 
+0 \\ 
+\end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+u + v = \begin{bmatrix}
+u_1 + v_1 \\ 
+u_2 + v_2 \\ 
+\vdots \\ 
+u_n + v_n \\ 
+\end{bmatrix}
+\end{equation*}
+
+
+\begin{equation*}
+r \times v = \begin{bmatrix}
+r \times v_1 \\ 
+r \times v_2 \\ 
+\vdots \\ 
+r \times v_n \\ 
+\end{bmatrix}
+\end{equation*}
+
+<p>
+Let \(u, v, w \in R^n\) and \(r, s \in R\):
+</p>
+
+\begin{align*}
+(u + v) + w &= u + (v + w) \tag{1}\\
+u + v &= v + u \tag{2}\\
+v + 0 &= v \tag{3}\\
+v + (-v) &= 0 \tag{4}\\
+r \times (u + v) &= r \times u + r \times v \tag{5}\\
+(r + s) \times u &= r \times u + s \times u \tag{6}\\
+(r \times s) \times v &= r \times (s \times v) \tag{7}\\
+1_R \times v &= v \tag{8}
+\end{align*}
+
+<p>
+These properties demonstrate that the set R<sup>n</sup> has a recognizable algebraic
+structure. Indeed properties (1) – (4) assert that R<sup>n</sup> is an , while
+the additional properties (5) through (8) make R<sup>n</sup> into a .
+</p>
+</div>
+
+<div id="outline-container-org4a1dafb" class="outline-4">
+<h4 id="org4a1dafb">The free R-module R<sup>n</sup></h4>
+<div class="outline-text-4" id="text-org4a1dafb">
+<p>
+It turns out that R<sup>n</sup> is a particular type of R-module called a Free R-module. To
+see what is special about it, consider the so-called elementary column vectors
+e(1), e(2), &#x2026; , e(n) where the ith entry of e(i) is 1 = 1<sub>R</sub> and all other
+entries are 0. Thus:
+</p>
+
+\begin{equation*}
+e(1) = \begin{bmatrix}
+1 \\ 
+0 \\ 
+\vdots \\ 
+0 \\ 
+\end{bmatrix}, \,
+e(2) = \begin{bmatrix}
+0 \\ 
+1 \\ 
+\vdots \\ 
+0 \\ 
+\end{bmatrix},
+\,\, (\ldots) \,\,,
+e(n) = \begin{bmatrix}
+0 \\ 
+0 \\ 
+\vdots \\ 
+n \\ 
+\end{bmatrix}
+\end{equation*}
+
+<p>
+Now an arbitrary vector \(v \in R^n\) is expressible in terms of these
+elementary vectors since:
+</p>
+
+\begin{equation*}
+v = v_1 \times e(1) + v_2 \times e(2) + \dots + v_n \times e(n)
+\end{equation*}
+
+<div class="org-center">
+<p>
+The set of elementary vectors {e(1), . . . , e(n)} is an R-basis of R<sup>n</sup>, so that R<sup>n</sup> is a free R-module of rank n.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org37274b0" class="outline-4">
+<h4 id="org37274b0">Balance vectors in R<sup>n</sup></h4>
+<div class="outline-text-4" id="text-org37274b0">
+<p>
+The accounts of a company generally fall into three categories:
+</p>
+
+<ol class="org-ol">
+<li><i>Asset accounts</i>, which represent anything owned by the company</li>
+<li><i>Liability accounts</i>, which record what is owed by the company to external entities</li>
+<li><i>Equity accounts</i> or a <i>profit and loss account</i>; these show what is owed by the
+company to the owners and also show the net assets of the company.</li>
+</ol>
+
+<p>
+It is a fundamental fact that a double entry accounting system must always be in
+balance, a fact which is implied by the accounting equation:
+</p>
+
+\begin{equation*}
+A - L = E
+\end{equation*}
+
+<p>
+We proceed now to study the properties of the subset of balance vectors in R<sup>n</sup>,
+where R is an ordered domain.
+</p>
+
+<p>
+First, let us consider the function σ : R<sup>n</sup> → R, which sums the entries of a
+column vector \(v \in R^n\). 
+</p>
+
+\begin{equation*}
+\sigma(v) = \sum_{i=0}^{n} v_i
+\end{equation*}
+
+<p>
+σ has the following properties:
+</p>
+
+\begin{align*}
+\sigma(v + w) &= \sigma(v) + \sigma(w) \\
+\sigma(rv) &= r \sigma(v)\\
+\forall v,w \in R^n, r \in R
+\end{align*}
+
+<p>
+A function between two R-modules with these properties is called an .
+</p>
+
+<p>
+Module elements which are sent to zero by a module homomorphism σ form a subset
+called the <b>kernel</b>, written Ker(σ).
+</p>
+
+<p>
+Returning to the particular homomorphism σ, we conclude that its kernel,
+i.e. the set of balance vectors, is a submodule of R<sup>n</sup>. We shall write \(\mathttt{Baln} (R)\)
+for the set of all balance vectors in R<sup>n</sup>, so that \(\mathttt{Ker}(\sigma) =
+\mathttt{Baln}(R)\) is a submodule of R<sup>n</sup>, which will be called the balance module
+of degree n over R.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge83fd1a" class="outline-4">
+<h4 id="orge83fd1a">Properties of the Balance Module</h4>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="footer"> Last updated 2023-10-07 Sat 21:43.<br> Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3). Source code availiable <a href="https://github.com/mtrsk/mtrsk.github.io">Here</a>.</div>
+</div>
+</body>
+</html>
