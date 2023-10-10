@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2023-10-07 Sat 21:43 -->
+<!-- 2023-10-10 Tue 11:49 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Algebraic Models for Accounting Systems</title>
@@ -242,8 +242,8 @@ for the JavaScript code in this tag.
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
+        displayAlign: "left",
+        displayIndent: "5em",
 
         "HTML-CSS": { scale: 100,
                         linebreaks: { automatic: "false" },
@@ -255,7 +255,7 @@ for the JavaScript code in this tag.
         NativeMML: {scale: 100},
         TeX: { equationNumbers: {autoNumber: "AMS"},
                MultLineWidth: "85%",
-               TagSide: "right",
+               TagSide: "left",
                TagIndent: ".8em"
              }
 });
@@ -283,13 +283,13 @@ for the JavaScript code in this tag.
 Algebraic Models for Accouting Systems
 </p>
 
-<div id="outline-container-orgb290e4d" class="outline-2">
-<h2 id="orgb290e4d">Approaches to Accounting Theory</h2>
-<div class="outline-text-2" id="text-orgb290e4d">
+<div id="outline-container-orgd1abdbc" class="outline-2">
+<h2 id="orgd1abdbc">Approaches to Accounting Theory</h2>
+<div class="outline-text-2" id="text-orgd1abdbc">
 </div>
-<div id="outline-container-orge3d7150" class="outline-3">
-<h3 id="orge3d7150">Algebraic concepts employed</h3>
-<div class="outline-text-3" id="text-orge3d7150">
+<div id="outline-container-orgd815bf5" class="outline-3">
+<h3 id="orgd815bf5">Algebraic concepts employed</h3>
+<div class="outline-text-3" id="text-orgd815bf5">
 <ul class="org-ul">
 <li>Balance vectors
 <ul class="org-ul">
@@ -310,19 +310,19 @@ flow around an accounting system.</li>
 system are the balance vectors, the inputs are the transactions and the
 outputs are the new balance vectors.</li>
 </ul></li>
-<li>Monoid</li>
+<li></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0fe1d58" class="outline-2">
-<h2 id="org0fe1d58">Balance Vectors</h2>
-<div class="outline-text-2" id="text-org0fe1d58">
+<div id="outline-container-org7495405" class="outline-2">
+<h2 id="org7495405">Balance Vectors</h2>
+<div class="outline-text-2" id="text-org7495405">
 </div>
-<div id="outline-container-org5487458" class="outline-3">
-<h3 id="org5487458">The values of an account</h3>
-<div class="outline-text-3" id="text-org5487458">
+<div id="outline-container-orgcc3c472" class="outline-3">
+<h3 id="orgcc3c472">The values of an account</h3>
+<div class="outline-text-3" id="text-orgcc3c472">
 <p>
 Let there be given a set R together with two binary operations on R called
 addition and multiplication, denoted in the usual way, such that the following
@@ -370,9 +370,9 @@ a,b \in R \wedge a \times b = 0 \implies a = 0 &\lor b = 0 \tag{12}\\
 </div>
 </div>
 
-<div id="outline-container-orgd367328" class="outline-3">
-<h3 id="orgd367328">The State of an Accounting System</h3>
-<div class="outline-text-3" id="text-orgd367328">
+<div id="outline-container-org94a8a8d" class="outline-3">
+<h3 id="org94a8a8d">The State of an Accounting System</h3>
+<div class="outline-text-3" id="text-org94a8a8d">
 <p>
 Let <b>R</b> be an <b>ordered domain</b>, which will be the universal set for all account
 values, and let n be a positive integer, which will be the number of accounts in
@@ -407,6 +407,10 @@ Of particular importance is the zero vector:
 \end{bmatrix}
 \end{equation*}
 
+<p>
+Addition can also be defined:
+</p>
+
 \begin{equation*}
 u + v = \begin{bmatrix}
 u_1 + v_1 \\ 
@@ -416,6 +420,9 @@ u_n + v_n \\
 \end{bmatrix}
 \end{equation*}
 
+<p>
+as well as scalar products:
+</p>
 
 \begin{equation*}
 r \times v = \begin{bmatrix}
@@ -448,9 +455,9 @@ the additional properties (5) through (8) make R<sup>n</sup> into a .
 </p>
 </div>
 
-<div id="outline-container-org4a1dafb" class="outline-4">
-<h4 id="org4a1dafb">The free R-module R<sup>n</sup></h4>
-<div class="outline-text-4" id="text-org4a1dafb">
+<div id="outline-container-orgfa04867" class="outline-4">
+<h4 id="orgfa04867">The free R-module R<sup>n</sup></h4>
+<div class="outline-text-4" id="text-orgfa04867">
 <p>
 It turns out that R<sup>n</sup> is a particular type of R-module called a Free R-module. To
 see what is special about it, consider the so-called elementary column vectors
@@ -497,9 +504,9 @@ The set of elementary vectors {e(1), . . . , e(n)} is an R-basis of R<sup>n</sup
 </div>
 </div>
 
-<div id="outline-container-org37274b0" class="outline-4">
-<h4 id="org37274b0">Balance vectors in R<sup>n</sup></h4>
-<div class="outline-text-4" id="text-org37274b0">
+<div id="outline-container-orgde73c80" class="outline-4">
+<h4 id="orgde73c80">Balance vectors in R<sup>n</sup></h4>
+<div class="outline-text-4" id="text-orgde73c80">
 <p>
 The accounts of a company generally fall into three categories:
 </p>
@@ -550,27 +557,27 @@ A function between two R-modules with these properties is called an .
 
 <p>
 Module elements which are sent to zero by a module homomorphism σ form a subset
-called the <b>kernel</b>, written Ker(σ).
+called the <b>kernel</b>, written \(\text{Ker}(\sigma)\).
 </p>
 
 <p>
 Returning to the particular homomorphism σ, we conclude that its kernel,
-i.e. the set of balance vectors, is a submodule of R<sup>n</sup>. We shall write \(\mathttt{Baln} (R)\)
-for the set of all balance vectors in R<sup>n</sup>, so that \(\mathttt{Ker}(\sigma) =
-\mathttt{Baln}(R)\) is a submodule of R<sup>n</sup>, which will be called the balance module
-of degree n over R.
+i.e. the set of balance vectors, is a submodule of R<sup>n</sup>. We shall write
+\(\text{Baln} (R)\) for the set of all balance vectors in R<sup>n</sup>, so that
+\(\text{Ker}(\sigma) = \text{Baln}(R)\) is a submodule of R<sup>n</sup>, which will be called the
+balance module of degree n over R.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge83fd1a" class="outline-4">
-<h4 id="orge83fd1a">Properties of the Balance Module</h4>
+<div id="outline-container-org00c9329" class="outline-4">
+<h4 id="org00c9329">Properties of the Balance Module</h4>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<div class="footer"> Last updated 2023-10-07 Sat 21:43.<br> Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3). Source code availiable <a href="https://github.com/mtrsk/mtrsk.github.io">Here</a>.</div>
+<div class="footer"> Last updated 2023-10-10 Tue 11:49.<br> Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3). Source code availiable <a href="https://github.com/mtrsk/mtrsk.github.io">Here</a>.</div>
 </div>
 </body>
 </html>
