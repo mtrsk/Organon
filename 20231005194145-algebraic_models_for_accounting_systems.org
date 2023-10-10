@@ -4,6 +4,7 @@
 #+TITLE: Algebraic Models for Accounting Systems
 #+STARTUP: latexpreview
 #+ROAM_TAGS: "accounting" "algebra"
+#+Html_MATHJAX: align: left indent: 5em tagside: left
 
 Algebraic Models for Accouting Systems
 
@@ -22,7 +23,7 @@ Algebraic Models for Accouting Systems
   * The applicability to accounting is clear: the states of the accounting
     system are the balance vectors, the inputs are the transactions and the
     outputs are the new balance vectors.
-+ Monoid
++ [[id:d89285be-d7a9-46a1-8a10-e14e73b66935][Monoid]]
 
 * Balance Vectors
 ** The values of an account
@@ -94,6 +95,8 @@ Of particular importance is the zero vector:
 \end{bmatrix}
 \end{equation*}
 
+Addition can also be defined:
+
 \begin{equation*}
 u + v = \begin{bmatrix}
 u_1 + v_1 \\ 
@@ -103,6 +106,7 @@ u_n + v_n \\
 \end{bmatrix}
 \end{equation*}
 
+as well as scalar products:
 
 \begin{equation*}
 r \times v = \begin{bmatrix}
@@ -207,17 +211,13 @@ column vector $v \in R^n$.
 A function between two R-modules with these properties is called an [[id:e41608f8-fcf2-4b02-b502-9441c0aee369][R-Module Homomorphism]].
 
 Module elements which are sent to zero by a module homomorphism σ form a subset
-called the *kernel*, written Ker(σ).
+called the *kernel*, written $\text{Ker}(\sigma)$.
 
 Returning to the particular homomorphism σ, we conclude that its kernel,
-i.e. the set of balance vectors, is a submodule of R^n. We shall write $\mathttt{Baln} (R)$
-for the set of all balance vectors in R^n, so that $\mathttt{Ker}(\sigma) =
-\mathttt{Baln}(R)$ is a submodule of R^n, which will be called the balance module
-of degree n over R.
+i.e. the set of balance vectors, is a submodule of R^n. We shall write
+$\text{Baln} (R)$ for the set of all balance vectors in R^n, so that
+$\text{Ker}(\sigma) = \text{Baln}(R)$ is a submodule of R^n, which will be called the
+balance module of degree n over R.
 
 *** Properties of the Balance Module
-
-
-
-
 
