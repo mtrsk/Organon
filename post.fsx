@@ -2,14 +2,15 @@ open System
 open System.IO
 open System.Text.RegularExpressions
 
-type Post = { Path: string; Title: string; Date: DateTime }
+type Post = { Path: string; Title: string }
 
 let root =
     __SOURCE_DIRECTORY__
     |> Path.GetFullPath
     |> string
+let output = "index"
 
-let rxTitle = Regex(@"\+TITLE:\s?(.+)", RegexOptions.Compiled)
+let rxTitle = Regex(@"\+TITLE:\s?(.+)|\+title:\s?(.+)", RegexOptions.Compiled)
 
 let readFile(path: string) =
     let text =
@@ -26,32 +27,38 @@ let parse path (content: string) =
     let group = check rxTitle content
     match group with
     | Some (_, t) ->
-        let date = DateTime.UtcNow
-        Some { Title = t.Value; Date = date; Path = path; }
+        Some { Title = t.Value; Path = path; }
     | _ -> None
 
 let generateHtml (posts: Post []) filename outpath =
-    let render (p: Post) =
-        let path =
-            p.Path.Replace(root, ".").Replace(".org", ".html")
-        $"<li><a href={path}>{p.Title}</a></li>"
-    let list =
-        posts
-        |> Array.sortByDescending (fun p -> p.Date)
-        |> Array.map render
-        |> String.concat "\n"
+    task {
+        let render (p: Post) =
+            let path =
+                p.Path.Replace(root, ".").Replace(".org", ".html")
+            $"<li><a href={path}>{p.Title}</a></li>"
+        let list =
+            posts
+            |> Array.sortByDescending (fun p -> p.Path)
+            |> Array.map render
+            |> String.concat "\n"
 
-    let orgTemplate = $"
-        #+begin_export html
-        {list}
-        #+end_export
-    "
-    use writer = new StreamWriter(path = outpath + $"/{filename}.org")
-    writer.WriteLine(orgTemplate)
+        let orgTemplate = $"
+            #+begin_export html
+            {list}
+            #+end_export
+        "
+        let path = $"{outpath}/{filename}.org"
+        printfn "%A" path
+        use file = File.Create(path)
+        let bytes = System.Text.Encoding.UTF8.GetBytes(orgTemplate)
+        do! file.WriteAsync (ReadOnlyMemory bytes)
+    }
 
 let posts =
     Directory.GetFiles(root, "*.org")
     |> Array.map readFile
     |> Array.choose (fun (p,c) -> parse p c)
 
-generateHtml posts root
+generateHtml posts output root
+|> Async.AwaitTask
+|> Async.RunSynchronously
