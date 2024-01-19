@@ -10,7 +10,7 @@ let root =
     |> string
 let output = "index"
 
-let rxTitle = Regex(@"\+TITLE:\s?(.+)|\+title:\s?(.+)", RegexOptions.Compiled)
+let rxTitle = Regex(@"\+[Tt][Ii][Tt][Ll][Ee]:\s?(.+)", RegexOptions.Compiled)
 
 let readFile(path: string) =
     let text =
