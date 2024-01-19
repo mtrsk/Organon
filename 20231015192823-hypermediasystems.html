@@ -4,7 +4,7 @@
 <!-- 2024-01-19 Fri 02:45 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>managing-a-programming-project</title>
+<title>Hypermedia Systems</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="Marcos Benevides">
 <style type="text/css">
@@ -253,90 +253,104 @@ for the JavaScript code in this tag.
 </div>
 <div id="content">
 <header>
-<h1 class="title">managing-a-programming-project</h1>
+<h1 class="title">Hypermedia Systems</h1>
 </header><p>
-:ID:       da4d5031-66cb-4d1c-b8cf-24d12adf5c17
+:ID:       10d70300-3c11-48f7-af3b-d5d07d5a5f39
 </p>
 
-<div id="outline-container-org0e86172" class="outline-2">
-<h2 id="org0e86172">Introduction</h2>
-<div class="outline-text-2" id="text-org0e86172">
+<div id="outline-container-orgf5f65bf" class="outline-2">
+<h2 id="orgf5f65bf">Chapter 01 - Hypermedia: A Reintroduction</h2>
+<div class="outline-text-2" id="text-orgf5f65bf">
 </div>
-<div id="outline-container-org3533b40" class="outline-3">
-<h3 id="org3533b40">Your ground rules</h3>
-<div class="outline-text-3" id="text-org3533b40">
+<div id="outline-container-org505a7ec" class="outline-3">
+<h3 id="org505a7ec">What Is Hypermedia?</h3>
+<div class="outline-text-3" id="text-org505a7ec">
+<blockquote>
+<p>
+Hypermedia is a media, for example a text, that includes non-linear branching
+from one location in the media to another, via, for example, hyperlinks embedded
+in the media.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org7cc1cf2" class="outline-3">
+<h3 id="org7cc1cf2">A Brief History of Hypermedia</h3>
+<div class="outline-text-3" id="text-org7cc1cf2">
+<p>
+Where did the idea of hypermedia come from?
+</p>
+
 <ul class="org-ul">
-<li>Adopt a set of unambiguous definitions and stick with them</li>
-<li>Define your project's <span class="underline">development cycle</span> and related all schedules and work
-process to that cycle</li>
-<li>Define activities, such as <span class="underline">levels of testing</span>, in a consistent way</li>
-<li>Define a <span class="underline">system of documents</span> clearly, consistent and early</li>
+<li>The 1945 article , from Vanevar Bush</li>
+<li>Ted Nelson's work on the "Hypertext Editing System" at Brown University and who later created the File Retrieval and Editing System (FRESS)</li>
+<li>Douglas Engelbart's thesis on the ""</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1d1974b" class="outline-3">
-<h3 id="org1d1974b">Your contract</h3>
-<div class="outline-text-3" id="text-org1d1974b">
-<blockquote>
-<p>
-Half the horror stories about programming involve either bad contracts or no
-contract at all
-</p>
-</blockquote>
-
-<blockquote>
-<p>
-The fact that you are managing a programming project means that you will be
-running a business. You will have suppliers, you will have one or more
-customers. You will have employees, you will have commitments, you will have
-financial goals, you will have measured results. (&#x2026;) . Your responsibility is
-to manage your business so that everyone - your "investors" (the executives that
-gave you the assignment), your customers (the people who will use your system
-for a long time to come), your employees (&#x2026;), and you - will look at your
-operating results and feel a sense of satisfaction.
-</p>
-</blockquote>
-</div>
-
-<div id="outline-container-orgf0ba880" class="outline-4">
-<h4 id="orgf0ba880">Writing your own contract</h4>
-<div class="outline-text-4" id="text-orgf0ba880">
-<ol class="org-ol">
-<li>Scope of work</li>
-<li>Schedule and deliverables</li>
-<li>Key customer people</li>
-<li>Reviews</li>
-<li>Change management procedures</li>
-<li>Testing constraints</li>
-<li>Acceptance criteria</li>
-<li>Additional constraints</li>
-<li>Price</li>
-</ol>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org7ac5a85" class="outline-3">
-<h3 id="org7ac5a85">The nature of the beast</h3>
-<div class="outline-text-3" id="text-org7ac5a85">
-<p>
-"Why is software hard to build?"
-</p>
-
+<div id="outline-container-orgb94504b" class="outline-3">
+<h3 id="orgb94504b">Modern Implementation</h3>
+<div class="outline-text-3" id="text-orgb94504b">
 <ul class="org-ul">
-<li>The System</li>
+<li>Tim Berners-Lee's "World Wide Web"</li>
+<li>Roy Fielding's ""</li>
 </ul>
+</div>
+</div>
+
+<div id="outline-container-org3927d5f" class="outline-3">
+<h3 id="org3927d5f">The World’s Most Successful Hypertext: HTML</h3>
+<div class="outline-text-3" id="text-org3927d5f">
+</div>
+<div id="outline-container-orge2e3d20" class="outline-4">
+<h4 id="orge2e3d20">The Essence of HTML as a Hypermedia</h4>
+<div class="outline-text-4" id="text-orge2e3d20">
+</div>
+<div id="outline-container-org1e9646f" class="outline-5">
+<h5 id="org1e9646f">Anchor tags</h5>
+<div class="outline-text-5" id="text-org1e9646f">
+<div class="org-src-container">
+<pre class="src src-html">&lt;a href="https://hypermedia.systems/"&gt;
+  Hypermedia Systems
+&lt;/a&gt;
+</pre>
+</div>
 <blockquote>
 <p>
-In order for a system that you are building to be useful, it needs to satisfy
-the needs of other systems.
+An anchor tag consists of the tag itself, <code>&lt;a&gt;&lt;/a&gt;</code>, as well as the attributes
+and content within the tag. Of particular interest is the href attribute, which
+specifies a hypertext reference to another document or document fragment. It is
+this attribute that makes the anchor tag a hypermedia control.
 </p>
 </blockquote>
-<ul class="org-ul">
-<li>Interactions</li>
-<li>Change</li>
-</ul>
+</div>
+</div>
+
+<div id="outline-container-org8f9b52f" class="outline-5">
+<h5 id="org8f9b52f">Form tags</h5>
+<div class="outline-text-5" id="text-org8f9b52f">
+<div class="org-src-container">
+<pre class="src src-html">&lt;form action="/signup" method="post"&gt;
+  &lt;input type="text" name="email" placeholder="Enter Email To Sign Up..."/&gt;
+  &lt;button&gt;Sign Up&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+</div>
+<blockquote>
+<p>
+This mechanism allows the user to issue requests to update the state of
+resources on the server. Note that despite this new type of request the
+communication between client and server is still done entirely with hypermedia.
+</p>
+
+<p>
+It is the form tag that makes Hypermedia-Driven Applications possible.
+</p>
+</blockquote>
+</div>
+</div>
 </div>
 </div>
 </div>
