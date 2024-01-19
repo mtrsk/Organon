@@ -135,6 +135,9 @@ structure. Indeed properties (1) – (4) assert that R^n is an [[id:6550857e-ec3
 the additional properties (5) through (8) make R^n into a [[id:e4bd8f7b-a64d-4da3-b1e8-289d6fb0c441][Left R-Module]].
 
 *** The free R-module R^n
+:PROPERTIES:
+:ID:       e5b2a71a-c743-4846-a831-dc78eefeffea
+:END:
 
 It turns out that R^n is a particular type of R-module called a Free R-module. To
 see what is special about it, consider the so-called elementary column vectors

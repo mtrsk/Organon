@@ -1,33 +1,5 @@
-#+NAME: list-posts
-#+BEGIN_SRC elisp :cache yes :exports results :results EXPORT html
-  (defun pretify (filename) (substring filename 15))
-  (defun generate-html (path)
-    (concat "<li><a href=./" (file-name-base path) ".html" ">" (pretify (file-name-base path)) "</a></li>"))
 
-  (setq wikipages (mapcar #'generate-html (file-expand-wildcards "./*-*.org")))
-
-  (mapconcat 'identity wikipages "\n")
-#+END_SRC
-
-#+RESULTS[91065dba97537337016ab8e6fd56fe9aa6366051]: list-posts
-#+begin_export html
-<li><a href=./20211012215602-kubernetes.html>kubernetes</a></li>
-<li><a href=./20211013230422-kubectl.html>kubectl</a></li>
-<li><a href=./20211023140908-helm.html>helm</a></li>
-<li><a href=./20211029092528-dns.html>dns</a></li>
-<li><a href=./20211103110648-kubernetes_storage.html>kubernetes_storage</a></li>
-<li><a href=./20211103202637-kubernetes_configmaps.html>kubernetes_configmaps</a></li>
-<li><a href=./20211104221056-history_of_logic.html>history_of_logic</a></li>
-<li><a href=./20211107141903-the_effective_manager.html>the_effective_manager</a></li>
-<li><a href=./20211108165331-kubernetes_secrets.html>kubernetes_secrets</a></li>
-<li><a href=./20211201115324-gitops.html>gitops</a></li>
-<li><a href=./20211202213813-distributed_systems.html>distributed_systems</a></li>
-<li><a href=./20211208202505-kubernetes_ingress.html>kubernetes_ingress</a></li>
-<li><a href=./20220204231800-mandarin_chinese.html>mandarin_chinese</a></li>
-<li><a href=./20230411100120-managing_a_programming_project.html>managing_a_programming_project</a></li>
-<li><a href=./20231005194145-algebraic_models_for_accounting_systems.html>algebraic_models_for_accounting_systems</a></li>
-<li><a href=./20231007164540-abelian_group.html>abelian_group</a></li>
-<li><a href=./20231007164648-commutative_ring.html>commutative_ring</a></li>
-<li><a href=./20231007165834-left_r_module.html>left_r_module</a></li>
-<li><a href=./20231007182834-r_module_homomorphism.html>r_module_homomorphism</a></li>
-#+end_export
+        #+begin_export html
+        
+        #+end_export
+    

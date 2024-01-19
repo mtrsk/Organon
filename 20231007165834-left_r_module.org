@@ -4,7 +4,6 @@
 #+TITLE: Left R-Module
 #+STARTUP: latexpreview
 #+ROAM_TAGS: "algebra"
-#+LATEX_HEADER: usepackage{arev}
 
 * Formal Definition
 
